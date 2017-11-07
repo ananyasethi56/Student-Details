@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
- <meta charset="utf-8">
+    <meta charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -14,67 +15,67 @@
     <div class="row">
         <div class="col-md-12">
             <h1>STUDENT DETAILS</h1>
+        </div>
     </div>
-   </div>
     <br>
-    
+
     <div class="butt row">
         <div class="col-md-3">
-            <button type="button" class="but1 but">Insert Student Data </button>
+            <button type="button" class="but1 but" onClick="insert()">Insert Student Data </button>
         </div>
         <div class="col-md-3">
-            <button type="button"  class="but  but4" >Edit Student Data </button>
+            <button type="button" class="but  but4" onClick="edit()">Edit Student Data </button>
         </div>
         <div class="col-md-3">
             <button type="button" class="but but2 but3" id="del">Delete Student Data </button>
         </div>
-    
-    <br> 
-   <br>
-  </div>
-  <div class="row"> 
+
+        <br>
+        <br>
+    </div>
+    <div class="row">
 
         <form id="form1">
-                Name: <input type="text" id="name" name="fname">
-                Rollno: <input type="text" id="roll" name="pass">
-                Stream: <input type="text" id="str" name="str1">
-                Passout Year: <input type:"text" id="year1"name="pass">
-                <button type="submit" form="nameform" id="add" value="Submit">Submit</button>
-                
-               
-               </form>
+            Name:
+            <input type="text" id="name" name="fname"> Rollno:
+            <input type="text" id="roll" name="pass"> Stream:
+            <input type="text" id="str" name="str1"> Passout Year:
+            <input type: "text" id="year1" name="pass">
+        </form>
+        <button onClick="submitForm()">Submit</button>
     </div>
-                                        
+
     <div class="row">
         <br>
         <br>
-    <table  id="tb">
-        <thead>
+        <table id="tb">
+            <thead>
                 <tr>
-                        
-                        <th>Name</th>
-                        <th>Roll No</th>
-                        <th>Stream</th>
-                        <th>PassoutYear</th> 
-                        <th>Select</th>   
-                       
-                    </tr>
-        </thead>
-        <tbody>
-                <tr id="row1"> 
-                <td id="name_row1">Ankit</td>
-                <td id="country_row1">1071</td>
-                <td id="age_row1">cse</td>
-                <td id="pass_out">2017</td>
-                <td>
-                   <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
-                    <input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')">
-                </td>
+
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Stream</th>
+                    <th>PassoutYear</th>
+                    <th>Select</th>
+
                 </tr>
-        </tbody>
-         
-    
-    </table>
-</div>
+            </thead>
+            <tbody>
+                <tr id="row1">
+                    <td id="name_row1">Ankit</td>
+                    <td id="country_row1">1071</td>
+                    <td id="age_row1">cse</td>
+                    <td id="pass_out">2017</td>
+                    <td>
+                        <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row(1)">
+                        <input type="button" id="save_button1" value="Save" class="save" onclick="save_row(1)">
+                    </td>
+                </tr>
+            </tbody>
+
+
+        </table>
+    </div>
 </body>
+
 </html>
