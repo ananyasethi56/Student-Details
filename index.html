@@ -27,7 +27,7 @@
             <button type="button" class="but  but4" onClick="edit()">Edit Student Data </button>
         </div>
         <div class="col-md-3">
-            <button type="button" class="but but2 but3" id="del">Delete Student Data </button>
+            <button type="button" class="but but2 but3" id="del" onClick="delete1()">Delete Student Data </button>
         </div>
 
         <br>
@@ -35,14 +35,14 @@
     </div>
     <div class="row">
 
-        <form id="form1">
-            Name:
-            <input type="text" id="name" name="fname"> Rollno:
-            <input type="text" id="roll" name="pass"> Stream:
-            <input type="text" id="str" name="str1"> Passout Year:
-            <input type: "text" id="year1" name="pass">
-        </form>
-        <button onClick="submitForm()">Submit</button>
+        <form id="form1" action="/action_page.php" method="post" >
+            Name: <input type="text" id="name" name="fname" required>
+            Rollno: <input type="text" id="roll" name="pass">
+            Stream: <input type="text" id="str" name="str1">
+            Passout Year: <input type: "text" id="year1" name="pass">
+           
+    </form>
+    <button onClick="submitForm()">Submit</button>
     </div>
 
     <div class="row">
@@ -51,7 +51,6 @@
         <table id="tb">
             <thead>
                 <tr>
-
                     <th>Name</th>
                     <th>Roll No</th>
                     <th>Stream</th>
@@ -61,16 +60,6 @@
                 </tr>
             </thead>
             <tbody>
-                <tr id="row1">
-                    <td id="name_row1">Ankit</td>
-                    <td id="country_row1">1071</td>
-                    <td id="age_row1">cse</td>
-                    <td id="pass_out">2017</td>
-                    <td>
-                        <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row(1)">
-                        <input type="button" id="save_button1" value="Save" class="save" onclick="save_row(1)">
-                    </td>
-                </tr>
             </tbody>
 
 
