@@ -1,97 +1,143 @@
-/*function myFunction()
-{
-   var table=document.getElementById("tb");
-   var row=table.insertRow(0);
-}*/
-
-var insertData = false;
-var editData = false;
-var insert = function() {
+let insertData = false;
+let editData = false;
+let insert =()=> {
     insertData = true;
     editData = false;
 }
 
-var edit = function() {
+let edit =()=> {
     editData = true;
     insertData = false;
 }
 
 
-$(document).ready(function(){
-    $("#form1").hide();
-    $(".but1").click(function(){
-        $("#form1").show();
+$(document).ready(()=>{
+    $(`#form1`).hide();
+    $(`.but1`).click(function(){
+        $(`#form1`).toggle(1000);
        
         
     });
 });
-$(document).ready(function(){
-    $(".but4").click(function(){
-        $("#form1").toggle(1000);
+$(document).ready(()=>{
+    $(`.but4`).click(function(){
+        $(`#form1`).toggle(1000);
        
         
     });
 });
-
-function validateForm()
-{
-    var x=document.forms["myform"]["fname"].value;
-    if(x == "")
-    {
-        alert("Name must be filled out!!");
-        return false;
-    }
-}
-var submitForm = function () {
+// on clicking submit button it will insert or edit the record and as well as verify the data
+var submitForm = ()=> {             
     if (insertData) {
-        var i = 1;
 
-            var name = $("#name").val();
-            var roll = $("#roll").val();
-            var stream = $("#str").val();
-            var year = $("#year1").val();
-            var markup = "<tr><td>" + name + "</td><td>" + roll + "</td><td>" + stream + "</td><td>"
-                + year + "</td><td><input type='checkbox' name='record'></td></tr>";
-            $("table tbody").append(markup);
-            $("#form1").hide();
-       
+        let name = document.getElementById(`name`).value;
+        let roll = document.getElementById(`roll`).value;
+        let str = document.getElementById(`str`).value;
+        let year2 = document.getElementById(`year1`).value;
+        let pttrn1=/[a-z A-Z]$/;
+        let pttrn2=/^[0-9]{4}$/;
+        let pttrn3=/^[0-9]{10}$/;
+        let pttrn4=/^[a-z A-Z]{3}$/;
         
-    }
+        // Conditions for validations
+        if (name == `` ||roll == ``|| str == `` || year2 == ``) {
+            alert(`ALL ENTERIES ARE REQUIRED!!!!!`);
+            return false;
+        }
+            
+          else  if (roll.length != 10) {
+              
+               alert(`The Contact No. must be at least 10 digit long!`);
+               return false;
+          }
+        else if(!pttrn1.test(name))
+               {
+               alert(`ENTER NAME IN CORRECT FORMAT`);
+               return false;
+               }
+          else if(!pttrn2.test(year2))
+               {
+               alert(`ENTER YEAR IN CORRECT FORMAT`);
+               return false;
+               }
+           else if(!pttrn3.test(roll))
+               {
+               alert(`ROLLNO IN CORRECT FORMAT`);
+               return false;
+               }
+               else if(!pttrn4.test(str))
+               {
+                alert(`STREAM SHOULD BE IN CORRECT FORMAT`);
+                return false;
+               }
+
+               else {
+                    let array=document.getElementsByTagName(`tr`);
+                    let flag=1;	
+                    let i=1;
+                // it will check the dupliacy of the records!!
+                while(i<array.length)
+                {
+                    
+                    let row=array[i].children[1].innerHTML;	
+                    if(row==document.getElementById(`roll`).value)
+                    {flag=0;}
+                    i++;
+                }
+                
+                if(flag == 0)
+                {
+                    alert(`ENTER NEW RECORD`);
+                }
+               else{ 
+                   // it will append the new row in the table
+                let markup = `<tr><td>` + name + `</td><td>` + roll + `</td><td>` + str + `</td><td>`
+                + year2 + `</td><td><input type='checkbox' name='record'></td></tr>`;
+                $(`table tbody`).append(markup);
+                $(`#form1`).hide();
+                return false;
+            }
+                
+            }
+        } 
+// it will edit the data by having rollno value
     if (editData) {
         console.log(1);
-        var name = $("#name").val();
-        var roll = $("#roll").val();
-        var stream = $("#str").val();
-        var year = $("#year1").val();
-        var a = document.getElementsByTagName("tr");
-        var j = 1;
-        while (j < a.length) {
-            var row = a[j].children[1].innerHTML;
-            if (row == document.getElementById("roll").value) {
-                a[j].childNodes[0].innerHTML = name;
-                a[j].childNodes[1].innerHTML = roll;
-                a[j].childNodes[2].innerHTML = stream;
-                a[j].childNodes[3].innerHTML = year;
+        let name = $(`#name`).val();
+        let roll = $(`#roll`).val();
+        let stream = $(`#str`).val();
+        let year = $(`#year1`).val();
+        let a = document.getElementsByTagName(`tr`);
+        
+        for(let val of a) {
+            let row = val.children[1].innerHTML;
+            if (row == document.getElementById(`roll`).value) {
+                val.childNodes[0].innerHTML = name;
+                val.childNodes[1].innerHTML = roll;
+                val.childNodes[2].innerHTML = stream;
+                val.childNodes[3].innerHTML = year;
 
             }
-            j++;
         }
-        $("#form1").hide();
+        $(`#form1`).hide();
     }
 
 }
-var delete1 = function() {
-        $("table tbody").find('input[name="record"]').each(function () {
+// it will delete a particular record selected by user!!
+let delete1 = ()=> {
+        $(`table tbody`).find('input[name="record"]').each(function () {
             if ($(this).is(":checked")) {
-                $(this).parents("tr").remove();
-                i = i - 1;
+                $(this).parents(`tr`).remove();
+            
             }
+            
         });
+        alert(`YOUR SELECTED ENTRIES HAS BEEN DELETED`);
 }
 
-$(document).ready(function () {
-    $(".but3").click(function () {
-        $("#form1").hide();
+$(document).ready( ()=> {
+    $(`.but3`).click(function () {
+        $(`#form1`).hide();
 
 
     });
@@ -99,60 +145,6 @@ $(document).ready(function () {
 
 
 
-
- /*if(insertData)
- {
-   $(document).ready(function(){
-    var i=1;
-        $("#add").click(function(){
-            
-             var name = $("#name").val();
-             var roll = $("#roll").val();
-             var stream= $("#str").val();
-             var year= $("#year1").val();
-             var markup = "<tr><td>"+ i + "</td><td>" + name + "</td><td>" + roll + "</td><td>" + stream + "</td><td>"
-              + year + "</td><td><input type='checkbox' name='record'></td></tr>";
-             $("table tbody").append(markup);
-             i=i+1;
-             $(document).ready(function()
-         {
-           $("#form1").hide();
-         });
-            
-         });     
-    
-     // Find and remove selected table rows
-     $("#del").click(function(){
-        $("table tbody").find('input[name="record"]').each(function(){
-            if($(this).is(":checked")){
-                $(this).parents("tr").remove();
-                i=i-1;
-            }
-        });
-    });
-});
-   
- }
-    if(editData) {
-        var a=document.getElementsByTagName("tr");
-          var i=1;
-          while(i<a.length)
-          {
-              var row=a[i].childNodes[2].innerHTML;
-              if(row==document.getElementById("roll").value)
-              {
-                  a[i].childNodes[1].innerHTML=document.getElementById("name").value;
-                  a[i].childNodes[2].innerHTML=document.getElementById("roll").value;
-                  a[i].childNodes[2].innerHTML=document.getElementById("str").value;
-                  a[i].childNodes[2].innerHTML=document.getElementById("year1").value;
-        
-              }
-              i++;
-          }
-        
-        }*/
-    
-   
     
 
 
