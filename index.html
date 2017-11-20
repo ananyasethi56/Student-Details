@@ -5,49 +5,61 @@
     <meta charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-social.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="js/main.js"></script>
 </head>
 
-<body class="container">
+<body>
+    <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1>STUDENT DETAILS</h1>
+        <div class="col-md-12" id="initial">
+            <h1 id="heading">STUDENT  DETAILS</h1>
         </div>
     </div>
     <br>
+    <br>
+    <br>
 
     <div class="butt row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <button type="button" class="but1 but" onClick="insert()">Insert Student Data </button>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <button type="button" class="but  but4" onClick="edit()">Edit Student Data </button>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <button type="button" class="but but2 but3" id="del" onClick="delete1()">Delete Student Data </button>
         </div>
 
         <br>
         <br>
+        <br>
+        
     </div>
     <div class="row">
 
-        <form id="form1" action="/action_page.php" method="post" >
-            Name: <input type="text" id="name" name="fname" required>
-            Rollno: <input type="text" id="roll" name="pass">
-            Stream: <input type="text" id="str" name="str1">
-            Passout Year: <input type: "text" id="year1" name="pass">
-           
-    </form>
-    <button onClick="submitForm()">Submit</button>
+        <form id="form1"  name="form2" class="form-inline" >
+            <br>
+            <h3> Name:</h3> <input type="text" placeholder="Enter Your Name" id="name" name="fname">
+           <h3> Rollno:</h3>  <input type="text" placeholder="Enter Your Rollno" id="roll" name="pass">
+            <h3>Stream:</h3><input type="text" placeholder="Enter Your Stream" id="str" name="str1">
+           <h3>Passout Year:</h3> <input type= "text" placeholder="Enter Your Year" id="year1" name="pass">
+           <br>
+           <br>
+            <input type="button"  id="button1"value="Submit" onClick="submitForm()">
+        </form>
     </div>
 
     <div class="row">
         <br>
         <br>
+        <br>
+        <div class="container">
         <table id="tb">
             <thead>
                 <tr>
@@ -60,11 +72,23 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>Ananya</td>
+                    <td>1510991071</td>
+                    <td>Cse</td>
+                    <td>2015</td>
+                    <td><input type='checkbox' name='record'></td>
+                </tr>
             </tbody>
 
 
         </table>
-    </div>
+   
+
+        
+        </div>
+     </div>
+
 </body>
 
 </html>
